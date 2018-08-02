@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{%load crispy_forms_tags%}
+
+{% block body %}
+<center>
+    <h1>New post</h1>
+ <div class="w3-container w3-grey" style="height: 390px; width: 600px";>
+    <form method="POST">
+    	{% csrf_token %}
+        {{ form|crispy }}
+        <br>
+        <button type="submit" class="save btn btn-success">ADD POST</button>
+    </form>
+  </div>
+</center>
+{% endblock %}

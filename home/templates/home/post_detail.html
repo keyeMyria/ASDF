@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block body %}
+    <div class="post">
+        {% if user.is_authenticated %}
+        <button class="btn btn-default"><a href="{% url 'home:post_remove' post.id %}">DELETE THIS POST</a></button>
+        <button class="btn btn-default"><a href="{% url 'home:post_edit' post.id %}">EDIT THIS POST</a></button>
+        {% endif %}
+        {% if post.created %}
+            <div class="date">
+                {{ post.created }}
+            </div>
+        {% endif %}
+        <u><h1>{{ post.title }}</h1></u>
+        <h3>{{ post.post }}</h3>
+        <u><h2>{{ post.user }}</h2></u>
+         <u><h2>LIKES :{{ post.likes }}</h2></u>
+        <br><br>
+        <button class="btn btn-success"><a href="{% url 'home:like' post.id %}">LIKE</a></button>
+    </div>
+    <h3>COMMENTS!!</h3>
+    <button class="btn btn-default"><a href="{% url 'home:add_comment' post.id %}">ADD COMMENT</a></button>
+    {% for comment in post.comments.all %}
+        <div class="comment">
+            <div class="date">{{ comment.created_date }}</div>
+            <strong>{{ comment.author }}</strong>
+            <p>{{ comment.text}}</p>
+        </div>
+        {% empty %}
+            <p>No comments</p>
+    {% endfor %}
+{% endblock %}

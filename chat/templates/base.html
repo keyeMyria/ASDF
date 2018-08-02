@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {%block head %}
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+  <title>Alan</title>
+  {%endblock%}
+</head>
+<body>
+  <div class="jumbotron">
+  {% if user.is_authenticated %}
+  <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">TEST BLOG</a>
+      <a class="navbar-brand" href="/new/profile">My Profile</a>
+      <a class="navbar-brand" href="/new/logout">LOGOUT</a>
+      <a class="navbar-brand" href="/new/profile/edit">EDIT INFO</a>
+      <a class="navbar-brand" href="/new/profile/change_password">CHANGE PASS</a>
+      <a class="navbar-brand" href="/home/post">VIEW POSTS</a>
+      <a class="navbar-brand" href="/home/post/new">ADD NEW POST</a>
+
+    </div>
+  </div>
+</nav>
+{% else %}
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="">TEST BLOG</a>
+      <a class="navbar-brand" href="/new/login">LOGIN</a>
+    </div>
+   <a class="navbar-brand" href="/new/register">Register Here</a>
+  </div>
+</nav>
+{% endif %}
+{%block body %}
+{%endblock%}
+</body>
+</div>
+</html>
